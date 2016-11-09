@@ -1,0 +1,1 @@
+int globalSeven = 7;
