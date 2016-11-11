@@ -22,7 +22,14 @@ int main() {
     p = (int*) malloc(size * sizeof(int));
 
     for (i = 0; i < size; i++) {
-        p[i] = i*i;
+        *p = i*i;
+        p++;
+        // p[i] = i*i;
+    }
+
+    for (i = 0; i < size; i++) { // return pointer to start of part of memory
+        p--;
+//      *p = i*i;
     }
 
     for (i = 0; i < size; i++) {
