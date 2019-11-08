@@ -4,7 +4,6 @@
 
 #include <stdio.h>
 #include <math.h>
-#include <string.h>
 
 int makeFile(char filePath[], char message[], float number) {
     FILE *file = fopen(filePath, "w");
