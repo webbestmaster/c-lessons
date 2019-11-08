@@ -4,6 +4,17 @@
 
 #include <stdio.h>
 #include <math.h>
+#include <string.h>
+
+int makeFile(char filePath[], char message[], float number) {
+    FILE *file = fopen(filePath, "w");
+
+    fprintf(file, message, number);
+
+    fclose(file);
+
+    return 0;
+}
 
 float getDistance(float x1, float y1, float x2, float y2) {
     float deltaX, deltaY;
@@ -18,6 +29,8 @@ int main() {
     float x1, y1, x2, y2, x3, y3;
     float dotX, dotY;
     float distance1, distance2, distance3;
+    char message[] = "Минимальное расстояние равно %f\n";
+    char pathToFile[] = "out.txt";
 
     printf("Введите значения углов треугольника в формате: x1 y1 x2 y2 x3 y3\n");
     scanf("%f %f %f %f %f %f", &x1, &y1, &x2, &y2, &x3, &y3);
@@ -30,16 +43,16 @@ int main() {
     distance3 = getDistance(x2, y2, dotX, dotY);
 
     if (distance1 < distance2 && distance1 < distance3) {
-        printf("Минимальное расстояние равно %f\n", distance1);
+        makeFile(pathToFile, message, distance1);
         return 0;
     }
 
     if (distance2 < distance1 && distance2 < distance3) {
-        printf("Минимальное расстояние равно %f\n", distance2);
+        makeFile(pathToFile, message, distance2);
         return 0;
     }
 
-    printf("Минимальное расстояние равно %f\n", distance3);
+    makeFile(pathToFile, message, distance3);
 
     return 0;
 }
